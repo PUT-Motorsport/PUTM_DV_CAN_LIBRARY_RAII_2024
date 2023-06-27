@@ -29,10 +29,10 @@ namespace PUTM_CAN
         inline CanRx(const CanRx &) = delete;
         inline CanRx &operator=(const CanRx &) = delete;
 
-        inline T const receive();
-        
+        inline T receive() const;
+
         template <typename U = T> /* ENABLE ONLY IF T != can_frame */
-        std::enable_if_t<sizeof(U) && (false == std::is_same<U, can_frame>::value), U>inline const receive_rtr();
+        std::enable_if_t<sizeof(U) && (false == std::is_same<U, can_frame>::value), U>inline receive_rtr() const;
 
     private:
         using file_descriptor_index = int;
@@ -88,7 +88,7 @@ namespace PUTM_CAN
     }
 
     template <typename T>
-    inline T const CanRx<T>::receive()
+    inline T CanRx<T>::receive() const
     {
         T rx_frame;
         can_frame frame;
@@ -102,7 +102,7 @@ namespace PUTM_CAN
 
     template <typename T>
     template <typename U>
-    std::enable_if_t<sizeof(U) && (false == std::is_same<U, can_frame>::value), U> inline const CanRx<T>::receive_rtr()
+    std::enable_if_t<sizeof(U) && (false == std::is_same<U, can_frame>::value), U> inline CanRx<T>::receive_rtr() const
     {
         can_frame frame;
         frame.can_id = can_id<U> | CAN_RTR_FLAG;
@@ -144,7 +144,7 @@ namespace PUTM_CAN
     }
 
     template <>
-    inline can_frame const CanRx<can_frame>::receive()
+    inline can_frame CanRx<can_frame>::receive() const
     {
         can_frame frame;
         if (read(file_descriptor, &frame, sizeof(frame)) < (ssize_t)sizeof(frame))
