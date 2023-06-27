@@ -25,6 +25,7 @@ namespace PUTM_CAN
     public:
         inline CanRx(const char *const ifname, const time_t rx_timeout_in_s);
         inline ~CanRx();
+        
         inline CanRx(const CanRx &) = delete;
         inline CanRx &operator=(const CanRx &) = delete;
 
@@ -48,11 +49,10 @@ namespace PUTM_CAN
         ifreq ifr;
         sockaddr_can addr;
         file_descriptor = socket(PF_CAN, SOCK_RAW, CAN_RAW);
-        if (file_descriptor == -1)
+        if (file_descriptor == INVALID_FILE_DESCRIPTOR)
         {
             throw std::runtime_error("socket() failed");
         }
-        // TODO: Something safer than strncpy ???
         (void)std::strncpy(ifr.ifr_name, interface_name, sizeof(ifr.ifr_name));
         if (ioctl(file_descriptor, SIOCGIFINDEX, &ifr) == -1)
         {
@@ -63,14 +63,11 @@ namespace PUTM_CAN
         {
             throw std::runtime_error("setsockopt() set timeout failed");
         }
-
-        // TODO: do not apply filter when T = can_frame
         can_filter filter = {can_id<T>, (CAN_SFF_MASK | CAN_EFF_FLAG | CAN_RTR_FLAG)};
         if (setsockopt(file_descriptor, SOL_CAN_RAW, CAN_RAW_FILTER, &filter, sizeof(filter)) != 0)
         {
             throw std::runtime_error("setsockopt() set filter failed");
         }
-
         addr.can_family = AF_CAN;
         addr.can_ifindex = ifr.ifr_ifindex;
         if (bind(file_descriptor, (sockaddr *)&addr, sizeof(addr)) == -1)
@@ -93,12 +90,11 @@ namespace PUTM_CAN
     {
         T rx_frame;
         can_frame frame;
-        if (read(file_descriptor, &frame, sizeof(can_frame)) < (ssize_t)sizeof(can_frame))
+        if (read(file_descriptor, &frame, sizeof(frame)) < (ssize_t)sizeof(frame))
         {
             throw std::runtime_error("read() failed");
         }
         (void)std::memcpy(&rx_frame, frame.data, sizeof(T));
-        std::cout<< can_id<T> << "vs" << frame.can_id << std::endl;
         return rx_frame;
     }
 
@@ -108,11 +104,50 @@ namespace PUTM_CAN
         can_frame frame;
         frame.can_id = can_id<T> | CAN_RTR_FLAG;
         frame.can_dlc = sizeof(T);
-        if (write(file_descriptor, &frame, sizeof(frame)) < 0)
+        if (write(file_descriptor, &frame, sizeof(can_frame)) < 0)
         {
             throw std::runtime_error("write() failed");
         }
         return receive();
     }
 
+    template <>
+    inline CanRx<can_frame>::CanRx(const char *const interface_name, const time_t rx_timeout_in_seconds)
+        : file_descriptor(INVALID_FILE_DESCRIPTOR)
+    {
+        ifreq ifr;
+        sockaddr_can addr;
+        file_descriptor = socket(PF_CAN, SOCK_RAW, CAN_RAW);
+        if (file_descriptor == INVALID_FILE_DESCRIPTOR)
+        {
+            throw std::runtime_error("socket() failed");
+        }
+        (void)std::strncpy(ifr.ifr_name, interface_name, sizeof(ifr.ifr_name));
+        if (ioctl(file_descriptor, SIOCGIFINDEX, &ifr) == -1)
+        {
+            throw std::runtime_error("ioctl() failed");
+        }
+        timeval tv = {rx_timeout_in_seconds, 0};
+        if (setsockopt(file_descriptor, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv, sizeof(tv)) != 0)
+        {
+            throw std::runtime_error("setsockopt() set timeout failed");
+        }
+        addr.can_family = AF_CAN;
+        addr.can_ifindex = ifr.ifr_ifindex;
+        if (bind(file_descriptor, (sockaddr *)&addr, sizeof(addr)) == -1)
+        {
+            throw std::runtime_error("bind() failed");
+        }
+    }
+
+    template <>
+    inline can_frame const CanRx<can_frame>::receive()
+    {
+        can_frame frame;
+        if (read(file_descriptor, &frame, sizeof(frame)) < (ssize_t)sizeof(frame))
+        {
+            throw std::runtime_error("read() failed");
+        }
+        return frame;
+    }
 }

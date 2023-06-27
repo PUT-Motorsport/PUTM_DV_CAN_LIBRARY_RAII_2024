@@ -7,17 +7,27 @@ using namespace PUTM_CAN;
 int main()
 {
     /* CONNECT TO THE CAN INTERFACE */
+    
 
     CanRx<Apps_main> rx_apps_main("slcan0", NO_TIMEOUT);
     CanRx<BMS_LV_main> rx_bms_lv_main("slcan0", NO_TIMEOUT);
     CanRx<BMS_HV_main> rx_bms_hv_main("slcan0", NO_TIMEOUT);
 
+    CanRx<can_frame> rx_any("slcan0", NO_TIMEOUT);
+
+
     while (1)
     {
-        rx_apps_main.receive();
-        rx_bms_lv_main.receive();
-        rx_bms_hv_main.receive();
+        auto any = rx_any.receive();
+        std::cout << "any: " << any.can_id << std::endl;
     }
+
+    // while (1)
+    // {
+    //     rx_apps_main.receive();
+    //     rx_bms_lv_main.receive();
+    //     rx_bms_hv_main.receive();
+    // }
 
     // CanTx can("slcan0");
     // can.transmit(apps_main_lv);
