@@ -98,7 +98,21 @@ namespace PUTM_CAN
             throw std::runtime_error("read() failed");
         }
         (void)std::memcpy(&rx_frame, frame.data, sizeof(T));
+        std::cout<< can_id<T> << "vs" << frame.can_id << std::endl;
         return rx_frame;
+    }
+
+    template <typename T>
+    inline T const CanRx<T>::receive_rtr()
+    {
+        can_frame frame;
+        frame.can_id = can_id<T> | CAN_RTR_FLAG;
+        frame.can_dlc = sizeof(T);
+        if (write(file_descriptor, &frame, sizeof(frame)) < 0)
+        {
+            throw std::runtime_error("write() failed");
+        }
+        return receive();
     }
 
 }
