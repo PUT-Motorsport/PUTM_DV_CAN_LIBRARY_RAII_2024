@@ -25,12 +25,14 @@ namespace PUTM_CAN
     public:
         inline CanRx(const char *const ifname, const time_t rx_timeout_in_s);
         inline ~CanRx();
-        
+
         inline CanRx(const CanRx &) = delete;
         inline CanRx &operator=(const CanRx &) = delete;
 
         inline T const receive();
-        inline T const receive_rtr(); // disable when T = can_frame
+        
+        template <typename U = T> /* ENABLE ONLY IF T != can_frame */
+        std::enable_if_t<sizeof(U) && (false == std::is_same<U, can_frame>::value), U>inline const receive_rtr();
 
     private:
         using file_descriptor_index = int;
@@ -99,11 +101,12 @@ namespace PUTM_CAN
     }
 
     template <typename T>
-    inline T const CanRx<T>::receive_rtr()
+    template <typename U>
+    std::enable_if_t<sizeof(U) && (false == std::is_same<U, can_frame>::value), U> inline const CanRx<T>::receive_rtr()
     {
         can_frame frame;
-        frame.can_id = can_id<T> | CAN_RTR_FLAG;
-        frame.can_dlc = sizeof(T);
+        frame.can_id = can_id<U> | CAN_RTR_FLAG;
+        frame.can_dlc = sizeof(U);
         if (write(file_descriptor, &frame, sizeof(can_frame)) < 0)
         {
             throw std::runtime_error("write() failed");

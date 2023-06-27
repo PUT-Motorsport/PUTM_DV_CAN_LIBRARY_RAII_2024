@@ -13,13 +13,13 @@ int main()
     CanRx<BMS_LV_main> rx_bms_lv_main("slcan0", NO_TIMEOUT);
     CanRx<BMS_HV_main> rx_bms_hv_main("slcan0", NO_TIMEOUT);
 
-    CanRx<can_frame> rx_any("slcan0", NO_TIMEOUT);
+    CanRx<BMS_HV_main> rx_any("slcan0", NO_TIMEOUT);
 
 
     while (1)
     {
-        auto any = rx_any.receive();
-        std::cout << "any: " << any.can_id << std::endl;
+        auto any = rx_any.receive_rtr();
+        std::cout << "any: " << any.voltage_sum << std::endl;
     }
 
     // while (1)
