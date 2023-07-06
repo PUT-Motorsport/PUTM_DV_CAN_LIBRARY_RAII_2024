@@ -17,21 +17,28 @@ apps_main.device_state = Apps_states::Normal_operation;
 CanTx can_tx("slcan0");
 can_tx.transmit(apps_main);
 ```
-
-### Receive data
-The intuition behind receiving data is different. You have to create **one object for each device** you want to receive data from. You can set the timeout value for the receive() function. Remote frames are supported as well. 
+### Transmit a remote frame request
+To transmit a remote request you have to connect to the CAN interface and provide a name of the structure you want to receive. The library will then automatically create a remote frame request and send it. The same objects can be used to transmit data and remote frame requests.
 ```cpp
-CanRx<BMS_HV_main> bms_hv_main("slcan0", NO_TIMEOUT);
-CanRx<Apps_main> apps_main("slcan0", 3);
-
-auto bms_hv_main_data = bms_hv_main.receive();
-auto apps_main_data = apps_main.receive_rtr();
+CanTx can_tx("slcan0");
+can_tx.transmit_rtr<Apps_main>();
 ```
 
-### Extras (grupa Adam only)
-It is possible to receive whatever occurs on the CAN bus without specifying the device. API is exactly the same as in the "Receive data" example. Remote frames are not supported.
-
+### Receive data
+The intuition behind receiving data is different. You receive everything that occurs on the CAN bus and then handle the frame you want. A helper function has been provided to make conversions easier. Conversions throw if the provided structure doesn't match the received frame.
 ```cpp
-CanRx<can_frame> random_device("slcan0", NO_TIMEOUT);
-can_frame random_device_data = random_device.receive();
+CanRx can_rx("slcan0", NO_TIMEOUT);
+can_frame frame = can_rx.receive();
+switch (frame.can_id)
+{
+case can_id<Apps_main>:
+{
+    auto apps_frame = convert<Apps_main>(frame);
+    std::cout << apps_frame.pedal_position << std::endl;
+    break;
+}
+default:
+    std::cout << "id: "<< frame.can_id << " not handled" << std::endl;
+    break;
+}
 ```
