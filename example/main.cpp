@@ -5,23 +5,29 @@
 
 using namespace PUTM_CAN;
 
+
 int main()
 {
 
-    /* RECEIVE DATA */
-    CanRx<BMS_HV_main> bms_hv_main("slcan0", NO_TIMEOUT);
-    auto bms_hv_main_data = bms_hv_main.receive();
-    std::cout << bms_hv_main_data.voltage_sum << std::endl;
-
     /* TRANSMIT DATA */
+    CanTx can_tx("slcan0");
+    can_tx.transmit_rtr<Apps_main>();
+    Apps_main apps;
+    can_tx.transmit(apps);
 
-    Apps_main apps_main;
 
-    apps_main.pedal_position = 1;
-    apps_main.counter = 2;
-    apps_main.position_diff = 3;
-    apps_main.device_state = Apps_states::Normal_operation;
+    /* RECEIVE DATA */
+    // CanRx can_rx("slcan0", NO_TIMEOUT);
+    // can_frame frame = can_rx.receive();
+    // switch(frame.can_id)
+    // {
+    //     case can_id<Apps_main>:
+    //         Apps_main apps = convert(can_frame);
+    //         ros_apps.pedal_position = apps.pedal_position;
+    //         publish(ros_apps); 
+    //     case 0x61:
+    //     case 0x65:
+    // }
 
-    CanTx tx("slcan0");
-    tx.transmit(apps_main);
+    
 }

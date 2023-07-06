@@ -1,19 +1,18 @@
 #pragma once
 
+#include <unistd.h>
+#include <string.h>
 #include <cstring>
-#include <iostream>
+#include <stdexcept>
 
 #include <net/if.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 #include <linux/can.h>
-#include <unistd.h>
-#include <string.h>
-#include <cstring>
 #include <linux/can/raw.h>
 
-#include "can_id_specializations.hpp"
+#include "can_common.hpp"
 
 namespace PUTM_CAN
 {
@@ -29,11 +28,11 @@ namespace PUTM_CAN
         template <typename T>
         inline void transmit(const T &tx_frame) const;
 
+        template <typename T>
+        inline void transmit_rtr() const;
+
     private:
-        // TODO(KozAAAAA): Move somewhere else (abstract CanBase class??)
-        using file_descriptor_index = int;
-        static constexpr file_descriptor_index INVALID_FILE_DESCRIPTOR = -1;
-        file_descriptor_index file_descriptor;
+        int file_descriptor;
     };
 
 }
@@ -81,6 +80,18 @@ namespace PUTM_CAN
         frame.len = sizeof(T);
         (void)std::memcpy(frame.data, &tx_frame, sizeof(T));
         if (write(file_descriptor, &frame, sizeof(frame)) < 0)
+        {
+            throw std::runtime_error("write() failed");
+        }
+    }
+
+    template <typename T>
+    inline void CanTx::transmit_rtr() const
+    {
+        can_frame frame;
+        frame.can_id = can_id<T> | CAN_RTR_FLAG;
+        frame.can_dlc = sizeof(T);
+        if (write(file_descriptor, &frame, sizeof(can_frame)) < 0)
         {
             throw std::runtime_error("write() failed");
         }
