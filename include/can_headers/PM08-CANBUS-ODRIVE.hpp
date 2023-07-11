@@ -9,20 +9,26 @@ namespace PUTM_CAN{
 	};
 
 	struct __attribute__ ((packed)) Odrive_Heartbeat{
-		float Axis_Error;//Axis error
+		uint32_t Axis_Error;//Axis error
 		uint8_t Axis_State;//Axis State
+		uint8_t Flags;
 	};
 
 	struct __attribute__ ((packed)) Odrive_Estop{
 	};
 
-	struct __attribute__ ((packed)) Odrive_Get_Error{
-		float Active_Errors;
-		float Disarm_Reason;
+	struct __attribute__ ((packed)) Odrive_Get_Motor_Error{
+		uint8_t Active_Errors;
+		uint8_t Disarm_Reason;
+	};
+
+	struct __attribute__ ((packed)) Odrive_Get_Encoder_Error{
+		uint8_t Active_Errors;
+		uint8_t Disarm_Reason;
 	};
 
 	struct __attribute__ ((packed)) Odrive_Set_Axis_Node_ID{
-		float Axis_Node_ID;
+		uint8_t Axis_Node_ID;
 	};
 
 	struct __attribute__ ((packed)) Odrive_Set_Axis_State{
@@ -113,7 +119,10 @@ namespace PUTM_CAN{
 		float Vel_Gain;
 		float Vel_Integrator_Gain;
 	};
-
+	struct __attribute__ ((packed)) Odrive_Get_Controller_Error{
+		uint8_t Active_Errors;
+		uint8_t Disarm_Reason;
+	};
 
 	const uint16_t ODRIVE_HEARTBEAT_CAN_ID = 0xA1;
 	const uint8_t ODRIVE_HEARTBEAT_CAN_DLC = sizeof(Odrive_Heartbeat);
@@ -121,9 +130,14 @@ namespace PUTM_CAN{
 	const uint16_t ODRIVE_ESTOP_CAN_ID = 0xA2;
 	const uint8_t ODRIVE_ESTOP_CAN_DLC = sizeof(Odrive_Estop);
 	const uint8_t ODRIVE_ESTOP_FREQUENCY = 0;
-	const uint16_t ODRIVE_GET_ERROR_CAN_ID = 0xA3;
-	const uint8_t ODRIVE_GET_ERROR_CAN_DLC = sizeof(Odrive_Get_Error);
-	const uint8_t ODRIVE_GET_ERROR_FREQUENCY = 0;
+	
+	const uint16_t ODRIVE_GET_MOTOR_ERROR_CAN_ID = 0xA3;
+	const uint8_t ODRIVE_GET_MOTORERROR_CAN_DLC = sizeof(Odrive_Get_Motor_Error);
+	const uint8_t ODRIVE_GET_MOTOR_ERROR_FREQUENCY = 0;
+	const uint16_t ODRIVE_GET_ENCODER_ERROR_CAN_ID = 0xA4;
+	const uint8_t ODRIVE_GET_ENCODER_ERROR_CAN_DLC = sizeof(Odrive_Get_Encoder_Error);
+	const uint8_t ODRIVE_GET_ENCODER_ERROR_FREQUENCY = 0;
+
 	const uint16_t ODRIVE_SET_AXIS_NODE_ID_CAN_ID = 0xA6;
 	const uint8_t ODRIVE_SET_AXIS_NODE_ID_CAN_DLC = sizeof(Odrive_Set_Axis_Node_ID);
 	const uint8_t ODRIVE_SET_AXIS_NODE_ID_FREQUENCY = 0;
@@ -187,6 +201,9 @@ namespace PUTM_CAN{
 	const uint16_t ODRIVE_SET_VEL_GAINS_CAN_ID = 0xBB;
 	const uint8_t ODRIVE_SET_VEL_GAINS_CAN_DLC = sizeof(Odrive_Set_Vel_gains);
 	const uint8_t ODRIVE_SET_VEL_GAINS_FREQUENCY = 0;
+	const uint16_t ODRIVE_GET_CONTROLLER_ERROR_CAN_ID = 0xBC;
+	const uint8_t ODRIVE_GET_CONTROLLER_ERROR_CAN_DLC = sizeof(Odrive_Get_Controller_Error);
+	const uint8_t ODRIVE_GET_CONTROLLER_ERROR_FREQUENCY = 0;
 
 }
 

@@ -115,7 +115,9 @@ namespace PUTM_CAN
     template <>
     constexpr uint16_t can_id<Odrive_Estop> = ODRIVE_ESTOP_CAN_ID;
     template <>
-    constexpr uint16_t can_id<Odrive_Get_Error> = ODRIVE_GET_ERROR_CAN_ID;
+    constexpr uint16_t can_id<Odrive_Get_Motor_Error> = ODRIVE_GET_MOTOR_ERROR_CAN_ID;
+     template <>
+    constexpr uint16_t can_id<Odrive_Get_Encoder_Error> = ODRIVE_GET_ENCODER_ERROR_CAN_ID;
     template <>
     constexpr uint16_t can_id<Odrive_Set_Axis_Node_ID> = ODRIVE_SET_AXIS_NODE_ID_CAN_ID;
     template <>
@@ -158,5 +160,7 @@ namespace PUTM_CAN
     constexpr uint16_t can_id<Odrive_Set_Pos_Gain> = ODRIVE_SET_POS_GAIN_CAN_ID;
     template <>
     constexpr uint16_t can_id<Odrive_Set_Vel_gains> = ODRIVE_SET_VEL_GAINS_CAN_ID;
+    template <>
+    constexpr uint16_t can_id<Odrive_Get_Controller_Error> = ODRIVE_GET_CONTROLLER_ERROR_CAN_ID;
 
 }
