@@ -77,7 +77,7 @@ namespace PUTM_CAN
         static_assert(can_id<T> != INVALID_CAN_ID, "Can id has not been specified");
         can_frame frame;
         frame.can_id = can_id<T>;
-        frame.len = sizeof(T);
+        frame.can_dlc = sizeof(T);
         (void)std::memcpy(frame.data, &tx_frame, sizeof(T));
         if (write(file_descriptor, &frame, sizeof(frame)) < 0)
         {
