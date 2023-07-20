@@ -1,5 +1,5 @@
  #!/bin/bash
 
 modprobe vcan
-ip link add dev slcan0 type vcan
-ip link set up slcan0
+ip link add dev can0 type vcan
+ip link set up can0

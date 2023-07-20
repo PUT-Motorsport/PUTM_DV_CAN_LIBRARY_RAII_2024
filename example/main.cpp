@@ -9,14 +9,14 @@ int main()
 {
 
     /* TRANSMIT DATA */
-    CanTx can_tx("slcan0");
+    CanTx can_tx("can0");
     can_tx.transmit_rtr<Apps_main>();
     Apps_main apps;
     can_tx.transmit(apps);
 
     /* RECEIVE DATA */
 
-    CanRx can_rx("slcan0", NO_TIMEOUT);
+    CanRx can_rx("can0", NO_TIMEOUT);
     while (1)
     {
         can_frame frame = can_rx.receive();
