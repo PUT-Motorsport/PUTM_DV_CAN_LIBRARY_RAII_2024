@@ -47,7 +47,7 @@ namespace PUTM_CAN
 
     template <>
     constexpr uint16_t can_id<AmkRearRightActualValues1> =
-        REAR_LEFT_AMK_ACTUAL_VALUES_2_CAN_ID;
+        REAR_RIGHT_AMK_ACTUAL_VALUES_1_CAN_ID;
     template <>
     constexpr uint16_t can_id<AmkRearRightActualValues2> =
         REAR_RIGHT_AMK_ACTUAL_VALUES_2_CAN_ID;
