@@ -19,7 +19,7 @@ struct __attribute__((packed)) AmkFrontLeftStatus_t {
   unsigned int AMK_bDerating : 1;
 };
 
-struct __attribute__((packed)) AmkFrontLeftControl_t {
+struct __attribute__((packed)) amkFrontLeftControl_t {
   unsigned int AMK_bReserve1 : 8;
 
   unsigned int AMK_bInverterOn : 1;
@@ -48,7 +48,7 @@ struct __attribute__((packed)) AmkFrontLeftActualValues2 {
 
 // ---------- can device -> inverter ----------
 struct __attribute__((packed)) AmkFrontLeftSetpoints1 {
-  AmkFrontLeftControl_t AMK_Control;
+  amkFrontLeftControl_t AMK_Control;
   int16_t AMK_TargetVelocity;
   int16_t AMK_TorqueLimitPositiv;
   int16_t AMK_TorqueLimitNegativ;
