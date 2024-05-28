@@ -14,7 +14,11 @@ template <typename T>
 constexpr uint16_t can_id = INVALID_CAN_ID;
 
 template <>
-constexpr uint16_t can_id<Frontbox_main> = FRONTBOX_MAIN_CAN_ID;
+constexpr uint16_t can_id<DriverInput> = DRIVER_INPUT_CAN_ID;
+
+template <>
+constexpr uint16_t can_id<FrontData> = FRONT_DATA_CAN_ID;
+
 template <>
 constexpr uint16_t can_id<AmkFrontLeftActualValues1> = FRONT_LEFT_AMK_ACTUAL_VALUES_1_CAN_ID;
 template <>
