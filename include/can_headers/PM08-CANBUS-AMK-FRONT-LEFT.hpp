@@ -1,14 +1,11 @@
-#ifndef AMK_FRONT_LEFT
-#define AMK_FRONT_LEFT
+#pragma once
 
 #include <cstdint>
 
-namespace PUTM_CAN
-{
+namespace PUTM_CAN {
 
 // Structures used to pack data as in the datasheet
-struct __attribute__((packed)) AmkFrontLeftStatus_t
-{
+struct __attribute__((packed)) AmkFrontLeftStatus_t {
   unsigned int AMK_bReserve1 : 8;
 
   unsigned int AMK_bSystemReady : 1;
@@ -21,8 +18,7 @@ struct __attribute__((packed)) AmkFrontLeftStatus_t
   unsigned int AMK_bDerating : 1;
 };
 
-struct __attribute__((packed)) amkFrontLeftControl_t
-{
+struct __attribute__((packed)) amkFrontLeftControl_t {
   unsigned int AMK_bReserve1 : 8;
 
   unsigned int AMK_bInverterOn : 1;
@@ -34,16 +30,14 @@ struct __attribute__((packed)) amkFrontLeftControl_t
 };
 
 // ---------- inverter -> can device ----------
-struct __attribute__((packed)) AmkFrontLeftActualValues1
-{
+struct __attribute__((packed)) AmkFrontLeftActualValues1 {
   AmkFrontLeftStatus_t AMK_Status;
   int16_t AMK_ActualVelocity;
   int16_t AMK_TorqueCurrent;
   int16_t AMK_MagnetizingCurrent;
 };
 
-struct __attribute__((packed)) AmkFrontLeftActualValues2
-{
+struct __attribute__((packed)) AmkFrontLeftActualValues2 {
   int16_t AMK_TempMotor;
   int16_t AMK_TempInverter;
   uint16_t AMK_ErrorInfo;
@@ -52,8 +46,7 @@ struct __attribute__((packed)) AmkFrontLeftActualValues2
 // --------------------------------------------
 
 // ---------- can device -> inverter ----------
-struct __attribute__((packed)) AmkFrontLeftSetpoints1
-{
+struct __attribute__((packed)) AmkFrontLeftSetpoints1 {
   amkFrontLeftControl_t AMK_Control;
   int16_t AMK_TargetVelocity;
   int16_t AMK_TorqueLimitPositiv;
@@ -71,4 +64,3 @@ constexpr uint16_t FRONT_LEFT_AMK_SETPOINTS_1_CAN_ID = 0x183 + 1;  // + n
 constexpr uint8_t FRONT_LEFT_AMK_SETPOINTS_1_CAN_DLC = sizeof(AmkFrontLeftSetpoints1);
 
 }  // namespace PUTM_CAN
-#endif

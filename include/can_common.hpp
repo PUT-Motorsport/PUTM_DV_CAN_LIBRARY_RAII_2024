@@ -5,19 +5,19 @@
 #include "can_headers/PM08-CANBUS-AMK-REAR-LEFT.hpp"
 #include "can_headers/PM08-CANBUS-AMK-REAR-RIGHT.hpp"
 #include "can_headers/PM09-CANBUS-FRONTBOX.hpp"
-namespace PUTM_CAN
-{
-static constexpr int INVALID_FILE_DESCRIPTOR = -1;
-static constexpr uint16_t INVALID_CAN_ID = 0xFFFFU;
+
+namespace PUTM_CAN {
+constexpr int INVALID_FILE_DESCRIPTOR = -1;
+constexpr uint16_t INVALID_CAN_ID = 0xFFFFU;
 
 template <typename T>
 constexpr uint16_t can_id = INVALID_CAN_ID;
 
 template <>
-constexpr uint16_t can_id<DriverInput> = DRIVER_INPUT_CAN_ID;
+constexpr uint16_t can_id<FrontboxDriverInput> = FRONTBOX_DRIVER_INPUT_CAN_ID;
 
 template <>
-constexpr uint16_t can_id<FrontData> = FRONT_DATA_CAN_ID;
+constexpr uint16_t can_id<FrontboxData> = FRONTBOX_DATA_CAN_ID;
 
 template <>
 constexpr uint16_t can_id<AmkFrontLeftActualValues1> = FRONT_LEFT_AMK_ACTUAL_VALUES_1_CAN_ID;
