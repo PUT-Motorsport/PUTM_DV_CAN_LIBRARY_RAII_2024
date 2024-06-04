@@ -27,11 +27,5 @@ struct __attribute__((packed)) FrontboxData {
 };
 
 const uint16_t FRONTBOX_DRIVER_INPUT_CAN_ID = 0x5;
-const uint8_t FRONTBOX_DRIVER_INPUT_CAN_DLC = sizeof(FrontboxDriverInput);
-const uint8_t FRONTBOX_DRIVER_INPUT_FREQUENCY = 100;
-
 const uint8_t FRONTBOX_DATA_CAN_ID = 0x65;
-const uint8_t FRONTBOX_DATA_CAN_DLC = sizeof(FrontboxData);
-const uint8_t FRONTBOX_DATA_FREQUENCY = 10;
-
 }  // namespace PUTM_CAN
