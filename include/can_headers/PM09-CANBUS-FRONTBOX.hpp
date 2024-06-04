@@ -26,6 +26,4 @@ struct __attribute__((packed)) FrontboxData {
   uint8_t front_right_hub_temperature;
 };
 
-const uint16_t FRONTBOX_DRIVER_INPUT_CAN_ID = 0x5;
-const uint8_t FRONTBOX_DATA_CAN_ID = 0x65;
 }  // namespace PUTM_CAN
