@@ -1,9 +1,9 @@
 #pragma once
 
-#include "can_headers/PM08-CANBUS-AMK-FRONT-LEFT.hpp"
-#include "can_headers/PM08-CANBUS-AMK-FRONT-RIGHT.hpp"
-#include "can_headers/PM08-CANBUS-AMK-REAR-LEFT.hpp"
-#include "can_headers/PM08-CANBUS-AMK-REAR-RIGHT.hpp"
+#include "can_headers/PM09-CANBUS-AMK-FRONT-LEFT.hpp"
+#include "can_headers/PM09-CANBUS-AMK-FRONT-RIGHT.hpp"
+#include "can_headers/PM09-CANBUS-AMK-REAR-LEFT.hpp"
+#include "can_headers/PM09-CANBUS-AMK-REAR-RIGHT.hpp"
 #include "can_headers/PM09-CANBUS-FRONTBOX.hpp"
 
 namespace PUTM_CAN {
