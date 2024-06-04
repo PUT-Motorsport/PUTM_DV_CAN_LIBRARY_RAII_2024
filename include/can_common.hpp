@@ -2,10 +2,7 @@
 
 #include <cstdint>
 
-#include "can_headers/PM09-CANBUS-AMK-FRONT-LEFT.hpp"
-#include "can_headers/PM09-CANBUS-AMK-FRONT-RIGHT.hpp"
-#include "can_headers/PM09-CANBUS-AMK-REAR-LEFT.hpp"
-#include "can_headers/PM09-CANBUS-AMK-REAR-RIGHT.hpp"
+#include "can_headers/PM09-CANBUS-AMK.hpp"
 #include "can_headers/PM09-CANBUS-DASHBOARD.hpp"
 #include "can_headers/PM09-CANBUS-FRONTBOX.hpp"
 
