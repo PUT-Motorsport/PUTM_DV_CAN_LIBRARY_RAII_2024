@@ -5,6 +5,7 @@
 #include "can_headers/PM09-CANBUS-AMK.hpp"
 #include "can_headers/PM09-CANBUS-DASHBOARD.hpp"
 #include "can_headers/PM09-CANBUS-FRONTBOX.hpp"
+#include "can_headers/PM09-CANBUS-PC.hpp"
 
 namespace PUTM_CAN {
 constexpr int INVALID_FILE_DESCRIPTOR = -1;
@@ -16,6 +17,8 @@ constexpr uint16_t can_id = INVALID_CAN_ID;
 namespace PUTM_CAN {
 template <>
 constexpr uint16_t can_id<FrontboxDriverInput> = 0x5;
+template <>
+constexpr uint16_t can_id<PcMainData> = 0x10;
 template <>
 constexpr uint16_t can_id<FrontboxData> = 0x65;
 template <>
