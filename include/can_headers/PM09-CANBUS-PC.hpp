@@ -21,5 +21,9 @@ struct __attribute__((packed)) PcMainData {
     bool inverters_ready: 1;
 };
 
+struct __attribute__((packed)) PcMainData2 {
+  uint16_t time;
+};
+
 
 }  // namespace PUTM_CAN
