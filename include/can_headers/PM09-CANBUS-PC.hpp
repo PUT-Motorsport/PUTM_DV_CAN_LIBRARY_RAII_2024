@@ -16,9 +16,12 @@ struct __attribute__((packed)) PcMainData {
     uint8_t frontRightMotorTemperature : 6;
     uint8_t rearLeftMotorTemperature : 6;
     uint8_t rearRightMotorTemperature : 6;
-
+    /* some states*/
     bool rtd : 1;
     bool inverters_ready: 1;
+    bool derating_on: 1;
+    /* amk state machine */
+    uint8_t amkState: 3;
 };
 
 struct __attribute__((packed)) PcMainData2 {
