@@ -31,26 +31,26 @@ constexpr uint16_t can_id<AmkFrontLeftActualValues1> = 0x282 + 1;
 template <>
 constexpr uint16_t can_id<AmkFrontLeftActualValues2> = 0x284 + 1;
 template <>
-constexpr uint16_t can_id<AmkFrontLeftSetpoints1> = 0x183 + 1;
+constexpr uint16_t can_id<AmkFrontLeftSetpoints> = 0x183 + 1;
 
 template <>
 constexpr uint16_t can_id<AmkFrontRightActualValues1> = 0x282 + 2;
 template <>
 constexpr uint16_t can_id<AmkFrontRightActualValues2> = 0x284 + 2;
 template <>
-constexpr uint16_t can_id<AmkFrontRightSetpoints1> = 0x183 + 2;
+constexpr uint16_t can_id<AmkFrontRightSetpoints> = 0x183 + 2;
 
 template <>
 constexpr uint16_t can_id<AmkRearLeftActualValues1> = 0x282 + 5;
 template <>
 constexpr uint16_t can_id<AmkRearLeftActualValues2> = 0x284 + 5;
 template <>
-constexpr uint16_t can_id<AmkRearLeftSetpoints1> = 0x183 + 5;
+constexpr uint16_t can_id<AmkRearLeftSetpoints> = 0x183 + 5;
 
 template <>
 constexpr uint16_t can_id<AmkRearRightActualValues1> = 0x282 + 6;
 template <>
 constexpr uint16_t can_id<AmkRearRightActualValues2> = 0x284 + 6;
 template <>
-constexpr uint16_t can_id<AmkRearRightSetpoints1> = 0x183 + 6;
+constexpr uint16_t can_id<AmkRearRightSetpoints> = 0x183 + 6;
 }  // namespace PUTM_CAN
