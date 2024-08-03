@@ -20,8 +20,6 @@ constexpr uint16_t can_id<FrontboxDriverInput> = 0x5;
 template <>
 constexpr uint16_t can_id<PcMainData> = 0x10;
 template <>
-constexpr uint16_t can_id<PcMainData2> = 0x11;
-template <>
 constexpr uint16_t can_id<FrontboxData> = 0x65;
 template <>
 constexpr uint16_t can_id<Dashboard> = 0x15;
