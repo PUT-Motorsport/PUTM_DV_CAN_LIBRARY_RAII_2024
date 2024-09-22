@@ -6,6 +6,8 @@
 #include "can_headers/PM09-CANBUS-DASHBOARD.hpp"
 #include "can_headers/PM09-CANBUS-FRONTBOX.hpp"
 #include "can_headers/PM09-CANBUS-PC.hpp"
+#include "can_headers/PM09-CANBUS-XSENS.HPP"
+#include"can_ids.hpp"
 
 namespace PUTM_CAN {
 constexpr int INVALID_FILE_DESCRIPTOR = -1;
@@ -16,39 +18,60 @@ constexpr uint16_t can_id = INVALID_CAN_ID;
 
 namespace PUTM_CAN {
 template <>
-constexpr uint16_t can_id<FrontboxDriverInput> = 0x5;
+constexpr uint16_t can_id<FrontboxDriverInput> = DRIVER_INPUT_CAN_ID;
 template <>
-constexpr uint16_t can_id<PcMainData> = 0x10;
+constexpr uint16_t can_id<PcMainData> = PC_MAIN_CAN_ID;
 template <>
-constexpr uint16_t can_id<FrontboxData> = 0x65;
-template <>
-constexpr uint16_t can_id<Dashboard> = 0x15;
+constexpr uint16_t can_id<Dashboard> = DASHBOARD_CAN_ID;
 
 template <>
-constexpr uint16_t can_id<AmkFrontLeftActualValues1> = 0x282 + 1;
+constexpr uint16_t can_id<XsensStatus> = XSENS_STATUS_WORD;
 template <>
-constexpr uint16_t can_id<AmkFrontLeftActualValues2> = 0x284 + 1;
+constexpr uint16_t can_id<XsensOrientation> = XSENS_ORIENTATION;
 template <>
-constexpr uint16_t can_id<AmkFrontLeftSetpoints> = 0x183 + 1;
+constexpr uint16_t can_id<XsensEuler> = XSENS_EULER;
+template <>
+constexpr uint16_t can_id<XsensInertialData> = XSENS_INERTAIL_DATA;
+template <>
+constexpr uint16_t can_id<XsensRateOfTurnHighRate> = XSENS_RATE_OF_TURN_HR;
+template <>
+constexpr uint16_t can_id<XsensAccelerationHighRate> = XSENS_ACCELERATION_HR;
+template <>
+constexpr uint16_t can_id<XsensPosition> = XSENS_POSITION;
+template <>
+constexpr uint16_t can_id<XsensVelocity> = XSENS_VELOCITY;
+
 
 template <>
-constexpr uint16_t can_id<AmkFrontRightActualValues1> = 0x282 + 2;
-template <>
-constexpr uint16_t can_id<AmkFrontRightActualValues2> = 0x284 + 2;
-template <>
-constexpr uint16_t can_id<AmkFrontRightSetpoints> = 0x183 + 2;
+constexpr uint16_t can_id<FrontboxData> = FRONT_DATA_CAN_ID;
+
+
 
 template <>
-constexpr uint16_t can_id<AmkRearLeftActualValues1> = 0x282 + 5;
+constexpr uint16_t can_id<AmkFrontLeftActualValues1> = FRONT_LEFT_AMK_ACTUAL_VALUES_1_CAN_ID;
 template <>
-constexpr uint16_t can_id<AmkRearLeftActualValues2> = 0x284 + 5;
+constexpr uint16_t can_id<AmkFrontLeftActualValues2> = FRONT_LEFT_AMK_ACTUAL_VALUES_2_CAN_ID;
 template <>
-constexpr uint16_t can_id<AmkRearLeftSetpoints> = 0x183 + 5;
+constexpr uint16_t can_id<AmkFrontLeftSetpoints> = FRONT_LEFT_AMK_SETPOINTS_1_CAN_ID;
 
 template <>
-constexpr uint16_t can_id<AmkRearRightActualValues1> = 0x282 + 6;
+constexpr uint16_t can_id<AmkFrontRightActualValues1> = FRONT_RIGHT_AMK_ACTUAL_VALUES_1_CAN_ID;
 template <>
-constexpr uint16_t can_id<AmkRearRightActualValues2> = 0x284 + 6;
+constexpr uint16_t can_id<AmkFrontRightActualValues2> = FRONT_RIGHT_AMK_ACTUAL_VALUES_2_CAN_ID;
 template <>
-constexpr uint16_t can_id<AmkRearRightSetpoints> = 0x183 + 6;
+constexpr uint16_t can_id<AmkFrontRightSetpoints> = FRONT_RIGHT_AMK_SETPOINTS_1_CAN_ID;
+
+template <>
+constexpr uint16_t can_id<AmkRearLeftActualValues1> = REAR_LEFT_AMK_ACTUAL_VALUES_1_CAN_ID;
+template <>
+constexpr uint16_t can_id<AmkRearLeftActualValues2> = REAR_LEFT_AMK_ACTUAL_VALUES_2_CAN_ID;
+template <>
+constexpr uint16_t can_id<AmkRearLeftSetpoints> = REAR_LEFT_AMK_SETPOINTS_1_CAN_ID;
+
+template <>
+constexpr uint16_t can_id<AmkRearRightActualValues1> = REAR_RIGHT_AMK_ACTUAL_VALUES_1_CAN_ID;
+template <>
+constexpr uint16_t can_id<AmkRearRightActualValues2> = REAR_RIGHT_AMK_ACTUAL_VALUES_2_CAN_ID;
+template <>
+constexpr uint16_t can_id<AmkRearRightSetpoints> = REAR_RIGHT_AMK_SETPOINTS_1_CAN_ID;
 }  // namespace PUTM_CAN
