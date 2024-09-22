@@ -10,19 +10,28 @@ const uint16_t REARBOX_SAFETY_CAN_ID = 0x25;
 const uint16_t REARBOX_TEMPERATURE_CAN_ID = 0x26;
 const uint16_t REARBOX_MISCELLANEOUS_CAN_ID = 0x27;
 
-const uint16_t XSENS_STATUS_WORD = 0x30;
-const uint16_t XSENS_ORIENTATION = 0x31;
-const uint16_t XSENS_EULER = 0x32;
-const uint16_t XSENS_INERTAIL_DATA = 0x33;
-const uint16_t XSENS_RATE_OF_TURN_HR = 0x34;
-const uint16_t XSENS_ACCELERATION_HR = 0x35;
-const uint16_t XSENS_POSITION = 0x36;
-const uint16_t XSENS_VELOCITY = 0x37;
-
 const uint16_t FRONT_DATA_CAN_ID = 0x40;
 const uint16_t BMS_HV_MAIN_CAN_ID = 0x45;
 const uint16_t BMS_LV_MAIN_CAN_ID = 0x55;
 const uint16_t BMS_LV_TEMPERATURE_CAN_ID = 0x56;
+
+const uint16_t XSENS_ACCELERATION             = 0x70;
+const uint16_t XSENS_ACCELERATION_HR          = 0x71;
+const uint16_t XSENS_ALLTITUDE_ELLIPSOID      = 0x72;
+const uint16_t XSENS_DELTA_Q                  = 0x73;
+const uint16_t XSENS_ERROR                    = 0x74;
+const uint16_t XSENS_EULER                    = 0x75;
+const uint16_t XSENS_FREE_ACCELERATION        = 0x76;
+const uint16_t XSENS_INERTIAL_DATA            = 0x77;
+const uint16_t XSENS_MAGNETIC_FIELD           = 0x78;
+const uint16_t XSENS_ORIENTATION              = 0x79;
+const uint16_t XSENS_POSITION                 = 0x7A;
+const uint16_t XSENS_RATE_OF_TURN             = 0x7B;
+const uint16_t XSENS_RATE_OF_TURN_HR          = 0x7C;
+const uint16_t XSENS_STATUS                   = 0x7D;
+const uint16_t XSENS_TEMPERATURE_AND_PRESSURE = 0x7E;
+const uint16_t XSENS_UTC                      = 0x7F;
+const uint16_t XSENS_VELOCITY                 = 0x80;
 
 /* Secondary Can Bus */
 

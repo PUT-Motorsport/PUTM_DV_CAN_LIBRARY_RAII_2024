@@ -24,22 +24,53 @@ constexpr uint16_t can_id<PcMainData> = PC_MAIN_CAN_ID;
 template <>
 constexpr uint16_t can_id<Dashboard> = DASHBOARD_CAN_ID;
 
+
+
+
+
+
+
+
+
+
 template <>
-constexpr uint16_t can_id<XsensStatus> = XSENS_STATUS_WORD;
-template <>
-constexpr uint16_t can_id<XsensOrientation> = XSENS_ORIENTATION;
-template <>
-constexpr uint16_t can_id<XsensEuler> = XSENS_EULER;
-template <>
-constexpr uint16_t can_id<XsensInertialData> = XSENS_INERTAIL_DATA;
-template <>
-constexpr uint16_t can_id<XsensRateOfTurnHighRate> = XSENS_RATE_OF_TURN_HR;
+constexpr uint16_t can_id<XsensAcceleration> = XSENS_ACCELERATION;
 template <>
 constexpr uint16_t can_id<XsensAccelerationHighRate> = XSENS_ACCELERATION_HR;
 template <>
+constexpr uint16_t can_id<XsensAltitudeEllipsoid> = XSENS_ALLTITUDE_ELLIPSOID;
+template <>
+constexpr uint16_t can_id<XsensDeltaQ> = XSENS_DELTA_Q;
+template <>
+constexpr uint16_t can_id<XsensError> = XSENS_ERROR;
+template <>
+constexpr uint16_t can_id<XsensEuler> = XSENS_EULER;
+template <>
+constexpr uint16_t can_id<XsensFreeAcceleration> = XSENS_FREE_ACCELERATION;
+template <>
+constexpr uint16_t can_id<XsensInertialData> = XSENS_INERTIAL_DATA;
+template <>
+constexpr uint16_t can_id<XsensMagneticField> = XSENS_MAGNETIC_FIELD;
+template <>
+constexpr uint16_t can_id<XsensOrientation> = XSENS_ORIENTATION;
+template <>
 constexpr uint16_t can_id<XsensPosition> = XSENS_POSITION;
 template <>
+constexpr uint16_t can_id<XsensRateOfTurn> = XSENS_RATE_OF_TURN;
+template <>
+constexpr uint16_t can_id<XsensRateOfTurnHighRate> = XSENS_RATE_OF_TURN_HR;
+template <>
+constexpr uint16_t can_id<XsensStatus> = XSENS_STATUS;
+template <>
+constexpr uint16_t can_id<XsensTemperatureAndPressure> = XSENS_TEMPERATURE_AND_PRESSURE;
+template <>
+constexpr uint16_t can_id<XsensUtc> = XSENS_UTC;
+template <>
 constexpr uint16_t can_id<XsensVelocity> = XSENS_VELOCITY;
+
+
+
+
 
 
 template <>
