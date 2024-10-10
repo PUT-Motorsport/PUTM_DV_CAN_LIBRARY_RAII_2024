@@ -75,7 +75,6 @@ struct __attribute__((packed)) XsensMagneticField{
 
 struct __attribute__((packed)) XsensTemperatureAndPressure{
     int16_t temperature;
-    uint32_t pressure;
 };
 
 struct __attribute__((packed)) XsensAccelerationHighRate{
