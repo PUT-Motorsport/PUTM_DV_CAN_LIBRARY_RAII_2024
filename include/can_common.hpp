@@ -23,25 +23,9 @@ constexpr uint16_t can_id<FrontboxDriverInput> = DRIVER_INPUT_CAN_ID;
 template <>
 constexpr uint16_t can_id<PcMainData> = PC_MAIN_CAN_ID;
 template <>
-<<<<<<< HEAD
 constexpr uint16_t can_id<Dashboard> = DASHBOARD_CAN_ID;
-
-
-
-
-
-
-
-
-
-=======
-constexpr uint16_t can_id<FrontboxData> = 0x65;
 template <>
-constexpr uint16_t can_id<Dashboard> = 0x15;
-template <>
-constexpr uint16_t can_id<BmsHvMain> = 0x45;
->>>>>>> bmshv
-
+constexpr uint16_t can_id<BmsHvMain> = BMS_HV_MAIN_CAN_ID;
 template <>
 constexpr uint16_t can_id<XsensAcceleration> = XSENS_ACCELERATION;
 template <>
