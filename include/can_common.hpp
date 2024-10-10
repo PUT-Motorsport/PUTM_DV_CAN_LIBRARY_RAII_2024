@@ -6,6 +6,7 @@
 #include "can_headers/PM09-CANBUS-DASHBOARD.hpp"
 #include "can_headers/PM09-CANBUS-FRONTBOX.hpp"
 #include "can_headers/PM09-CANBUS-PC.hpp"
+#include "can_headers/PM09-CANBUS-BMSHVMAIN.hpp"
 
 namespace PUTM_CAN {
 constexpr int INVALID_FILE_DESCRIPTOR = -1;
@@ -23,6 +24,8 @@ template <>
 constexpr uint16_t can_id<FrontboxData> = 0x65;
 template <>
 constexpr uint16_t can_id<Dashboard> = 0x15;
+template <>
+constexpr uint16_t can_id<BmsHvMain> = 0x45;
 
 template <>
 constexpr uint16_t can_id<AmkFrontLeftActualValues1> = 0x282 + 1;
