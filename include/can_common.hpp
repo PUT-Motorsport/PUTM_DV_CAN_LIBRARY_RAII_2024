@@ -8,6 +8,7 @@
 #include "can_headers/PM09-CANBUS-PC.hpp"
 #include "can_headers/PM09-CANBUS-XSENS.HPP"
 #include"can_ids.hpp"
+#include "can_headers/PM09-CANBUS-BMSHVMAIN.hpp"
 
 namespace PUTM_CAN {
 constexpr int INVALID_FILE_DESCRIPTOR = -1;
@@ -23,16 +24,8 @@ template <>
 constexpr uint16_t can_id<PcMainData> = PC_MAIN_CAN_ID;
 template <>
 constexpr uint16_t can_id<Dashboard> = DASHBOARD_CAN_ID;
-
-
-
-
-
-
-
-
-
-
+template <>
+constexpr uint16_t can_id<BmsHvMain> = BMS_HV_MAIN_CAN_ID;
 template <>
 constexpr uint16_t can_id<XsensAcceleration> = XSENS_ACCELERATION;
 template <>
