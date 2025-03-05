@@ -8,7 +8,7 @@ struct __attribute__((packed)) FrontboxDriverInput {
   uint16_t pedal_position;  // pedal position form 0 – 1000 where 0 means pedal not pressed
   uint16_t brake_pressure_front;
   uint16_t brake_pressure_rear;
-  uint16_t steering_wheel_position;
+  int16_t steering_wheel_position;
 };
 
 struct __attribute__((packed)) FrontboxData {
