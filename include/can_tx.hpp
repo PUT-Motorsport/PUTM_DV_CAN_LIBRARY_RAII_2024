@@ -9,6 +9,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include <time.h>  
+
 #include <cstring>
 #include <stdexcept>
 
@@ -33,6 +35,8 @@ public:
 
 private:
   int file_descriptor;
+  int time;
+  char mama[20];
 };
 
 }  // namespace PUTM_CAN
@@ -40,9 +44,10 @@ private:
 namespace PUTM_CAN
 {
 
-inline CanTx::CanTx(const char * const interface_name) : file_descriptor(INVALID_FILE_DESCRIPTOR)
+inline CanTx::CanTx(const char * const interface_name) : file_descriptor(INVALID_FILE_DESCRIPTOR), time(clock())
 {
   ifreq ifr;
+  (void)std::strncpy(mama, interface_name, sizeof(interface_name));
   sockaddr_can addr;
   file_descriptor = socket(PF_CAN, SOCK_RAW, CAN_RAW);
   if (file_descriptor == INVALID_FILE_DESCRIPTOR) {
@@ -74,9 +79,13 @@ inline void CanTx::transmit(const T & tx_frame) const
   frame.can_id = can_id<T>;
   frame.can_dlc = sizeof(T);
   (void)std::memcpy(frame.data, &tx_frame, sizeof(T));
-  if (write(file_descriptor, &frame, sizeof(frame)) < 0) {
+  int size = write(file_descriptor, &frame, sizeof(frame));
+  if (size < 0) {
     throw std::runtime_error("write() failed");
   }
+  int f = clock() - time;
+  /*if((int)f/CLOCKS_PER_SEC % 1 == 0)
+    fprintf(stderr,"%d %f %s\n",size, ((float)f)/CLOCKS_PER_SEC ,mama);*/
 }
 
 template <typename T>

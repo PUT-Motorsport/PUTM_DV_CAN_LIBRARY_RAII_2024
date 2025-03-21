@@ -7,9 +7,10 @@
 #include "can_headers/PM09-CANBUS-FRONTBOX.hpp"
 #include "can_headers/PM09-CANBUS-PC.hpp"
 #include "can_headers/PM09-CANBUS-XSENS.hpp"
-#include"can_ids.hpp"
+#include "can_ids.hpp"
 #include "can_headers/PM09-CANBUS-BMSHVMAIN.hpp"
 #include "can_headers/PM09-CANBUS-BMSLVMAIN.hpp"
+#include "can_headers/PM09-CANBUS-LAPTIMER.hpp"
 
 
 namespace PUTM_CAN {
@@ -31,8 +32,9 @@ constexpr uint16_t can_id<BmsHvMain> = BMS_HV_MAIN_CAN_ID;
 template <>
 constexpr uint16_t can_id<BmsLvMain> = BMS_LV_MAIN_CAN_ID;
 template <>
+constexpr uint16_t can_id<LapTimer> = LAP_TIMER_CAN_ID;
 
-
+template <>
 constexpr uint16_t can_id<XsensAcceleration> = XSENS_ACCELERATION;
 template <>
 constexpr uint16_t can_id<XsensAccelerationHighRate> = XSENS_ACCELERATION_HR;
