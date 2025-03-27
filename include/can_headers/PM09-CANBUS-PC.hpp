@@ -6,8 +6,20 @@ namespace PUTM_CAN {
 
 struct __attribute__((packed)) PcMainData {   
     
+
+    bool inverter_on_fr:1;
+    bool inverter_on_fl:1;
+    bool inverter_on_rr:1;
+    bool inverter_on_rl:1;
+    
+    bool inverter_error_fr:1;
+    bool inverter_error_fl:1;  
+    bool inverter_error_rr:1;
+    bool inverter_error_rl:1; 
+
     int16_t torque_current;
     int16_t vechicle_speed;
+    bool inverter_ready;
     bool rtd :1;
     // bool rtd : 1;
     // uint8_t rearRightInverterTemperature;
