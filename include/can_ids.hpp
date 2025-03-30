@@ -5,7 +5,7 @@
 const uint16_t DRIVER_INPUT_CAN_ID = 0x5;
 const uint16_t PC_MAIN_CAN_ID = 0x10;
 const uint16_t LAP_TIMER_CAN_ID = 0x11;
-
+const uint16_t AMK_TEMP_DATA_ID = 0x12;
 const uint16_t DASHBOARD_CAN_ID = 0x15;
 
 const uint16_t REARBOX_SAFETY_CAN_ID = 0x25;
