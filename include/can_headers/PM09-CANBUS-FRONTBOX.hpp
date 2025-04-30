@@ -19,7 +19,7 @@ struct __attribute__((packed)) FrontboxData {
   bool sense_bspd : 1;
   bool sense_overtravel : 1;
   bool sense_right_wheel : 1;
-  uint8_t sc_state;
+  bool is_braking : 1;
   uint16_t front_left_suspension;
   uint16_t front_right_suspension;
   uint8_t front_left_hub_temperature;
