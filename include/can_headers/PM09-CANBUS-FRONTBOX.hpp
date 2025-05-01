@@ -20,8 +20,8 @@ struct __attribute__((packed)) FrontboxData {
   bool sense_overtravel : 1;
   bool sense_right_wheel : 1;
   bool is_braking : 1;
-  uint16_t front_left_suspension;
-  uint16_t front_right_suspension;
+  int16_t front_left_suspension;
+  int16_t front_right_suspension;
   uint8_t front_left_hub_temperature;
   uint8_t front_right_hub_temperature;
 };
