@@ -12,6 +12,11 @@ struct __attribute__((packed)) FrontboxDriverInput {
 };
 
 struct __attribute__((packed)) FrontboxData {
+
+  int16_t front_left_suspension;
+  int16_t front_right_suspension;
+  uint8_t apps_implausibility;
+
   bool sense_left_kill : 1;
   bool sense_right_kill : 1;
   bool sense_driver_kill : 1;
@@ -19,11 +24,17 @@ struct __attribute__((packed)) FrontboxData {
   bool sense_bspd : 1;
   bool sense_overtravel : 1;
   bool sense_right_wheel : 1;
-  uint8_t sc_state;
-  uint16_t front_left_suspension;
-  uint16_t front_right_suspension;
-  uint8_t front_left_hub_temperature;
-  uint8_t front_right_hub_temperature;
+  bool is_braking : 1;
+  bool apps : 1;
+
+  // bool s1 : 1;
+  // bool s2 : 1;
+  // bool s3 : 1;
+  // // bool s4 : 1;
+  // bool s5 : 1;
+  // bool s6 : 1;
+  // bool s7 : 1;
+  uint8_t s8 ;
 };
 
 }  // namespace PUTM_CAN

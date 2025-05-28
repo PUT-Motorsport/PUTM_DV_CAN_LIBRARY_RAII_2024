@@ -7,7 +7,7 @@ struct __attribute__((packed)) BmsLvMain {
   uint8_t soc;
   uint8_t temp_avg;
   uint8_t current;
-  uint8_t device_state;
+  //uint8_t device_state;
 };
 
 }  // namespace PUTM_CAN

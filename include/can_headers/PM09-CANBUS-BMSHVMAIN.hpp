@@ -4,7 +4,7 @@ namespace PUTM_CAN {
 
 struct __attribute__((packed)) BmsHvMain {
   uint16_t voltage_sum;
-  uint16_t current;
+  int16_t current;
   uint8_t temp_max;
   uint8_t temp_avg;
   uint16_t soc;

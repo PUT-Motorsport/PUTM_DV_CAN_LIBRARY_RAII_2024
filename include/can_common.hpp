@@ -6,11 +6,14 @@
 #include "can_headers/PM09-CANBUS-DASHBOARD.hpp"
 #include "can_headers/PM09-CANBUS-FRONTBOX.hpp"
 #include "can_headers/PM09-CANBUS-PC.hpp"
-#include "can_headers/PM09-CANBUS-XSENS.HPP"
+#include "can_headers/PM09-CANBUS-XSENS.hpp"
 #include "can_ids.hpp"
 #include "can_headers/PM09-CANBUS-BMSHVMAIN.hpp"
 #include "can_headers/PM09-CANBUS-BMSLVMAIN.hpp"
-//#include "can_headers/PM09-CANBUS-BMS-LV-TEMPERATURE"
+#include "can_headers/PM09-CANBUS-LAPTIMER.hpp"
+#include "can_headers/PM09-CANBUS-AMKTEMP.hpp"
+
+
 
 namespace PUTM_CAN {
 constexpr int INVALID_FILE_DESCRIPTOR = -1;
@@ -30,6 +33,10 @@ template <>
 constexpr uint16_t can_id<BmsHvMain> = BMS_HV_MAIN_CAN_ID;
 template <>
 constexpr uint16_t can_id<BmsLvMain> = BMS_LV_MAIN_CAN_ID;
+template <>
+constexpr uint16_t can_id<LapTimer> = LAP_TIMER_CAN_ID;
+template <>
+constexpr uint16_t can_id<AmkTempData> = AMK_TEMP_DATA_ID;
 
 template <>
 constexpr uint16_t can_id<XsensAcceleration> = XSENS_ACCELERATION;
