@@ -10,7 +10,7 @@ struct __attribute__((packed)) PcMainData {
     
 
     int16_t torque_current;
-    int16_t vechicle_speed;
+    int16_t vehicle_speed;
     bool inverter_ready:1;
     bool rtd :1;
     bool inverter_on_fr:1;
