@@ -13,15 +13,15 @@ struct __attribute__((packed)) PcMainData {
     int16_t vehicle_speed;
     bool inverter_ready:1;
     bool rtd :1;
-    bool inverter_on_fr:1;
     bool inverter_on_fl:1;
-    bool inverter_on_rr:1;
+    bool inverter_on_fr:1;
     bool inverter_on_rl:1;
+    bool inverter_on_rr:1;
     
-    bool inverter_error_fr:1;
-    bool inverter_error_fl:1;  
-    bool inverter_error_rr:1;
-    bool inverter_error_rl:1; 
+    bool inverter_error_fl:1;
+    bool inverter_error_fr:1;  
+    bool inverter_error_rl:1;
+    bool inverter_error_rr:1; 
 
     
     // bool rtd : 1;
