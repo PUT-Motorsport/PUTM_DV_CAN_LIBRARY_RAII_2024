@@ -12,6 +12,7 @@
 #include "can_headers/PM09-CANBUS-BMSLVMAIN.hpp"
 #include "can_headers/PM09-CANBUS-LAPTIMER.hpp"
 #include "can_headers/PM09-CANBUS-AMKTEMP.hpp"
+#include "can_headers/PM09-CANBUS-PDU.hpp"
 
 
 
@@ -37,6 +38,11 @@ template <>
 constexpr uint16_t can_id<LapTimer> = LAP_TIMER_CAN_ID;
 template <>
 constexpr uint16_t can_id<AmkTempData> = AMK_TEMP_DATA_ID;
+template <>
+constexpr uint16_t can_id<PduData> = PDU_DATA_CAN_ID;
+template <>
+constexpr uint16_t can_id<PduChannel> = PDU_CHANNEL_CAN_ID;
+
 
 template <>
 constexpr uint16_t can_id<XsensAcceleration> = XSENS_ACCELERATION;
