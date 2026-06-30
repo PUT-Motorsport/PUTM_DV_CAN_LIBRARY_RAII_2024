@@ -13,6 +13,8 @@
 #include "can_headers/PM09-CANBUS-LAPTIMER.hpp"
 #include "can_headers/PM09-CANBUS-AMKTEMP.hpp"
 #include "can_headers/PM09-CANBUS-PDU.hpp"
+#include "can_headers/PM09-CANBUS-CURRENT_SENSOR.hpp"
+#include "can_headers/PM09-CANBUS-STEERING_WHEEL.hpp"
 
 
 
@@ -42,6 +44,10 @@ template <>
 constexpr uint16_t can_id<PduData> = PDU_DATA_CAN_ID;
 template <>
 constexpr uint16_t can_id<PduChannel> = PDU_CHANNEL_CAN_ID;
+template <>
+constexpr uint16_t can_id<CurrentSensor> = CURRENT_SENSOR_CAN_ID;
+template <>
+constexpr uint16_t can_id<SteeringWheel> = STEERING_WHEEL_CAN_ID;
 
 
 template <>
