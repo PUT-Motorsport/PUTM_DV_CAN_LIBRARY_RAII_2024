@@ -19,6 +19,7 @@ const uint16_t BMS_HV_MAIN_CAN_ID = 0x45;
 const uint16_t BMS_LV_MAIN_CAN_ID = 0x55;
 const uint16_t BMS_LV_TEMPERATURE_CAN_ID = 0x56;
 const uint16_t AMK_TEMP_DATA_ID = 0x60;
+const uint16_t IVT_MSG_RESULT_I_CAN_ID = 0x521U; // 1313 decimal
 
 const uint16_t CURRENT_SENSOR_CAN_ID = 0x21;
 const uint16_t STEERING_WHEEL_CAN_ID = 0x20;

@@ -15,6 +15,7 @@
 #include "can_headers/PM09-CANBUS-PDU.hpp"
 #include "can_headers/PM09-CANBUS-CURRENT_SENSOR.hpp"
 #include "can_headers/PM09-CANBUS-STEERING_WHEEL.hpp"
+#include "can_headers/PM09-CANBUS-IVT.hpp"
 
 
 
@@ -48,6 +49,8 @@ template <>
 constexpr uint16_t can_id<CurrentSensor> = CURRENT_SENSOR_CAN_ID;
 template <>
 constexpr uint16_t can_id<SteeringWheel> = STEERING_WHEEL_CAN_ID;
+template <>
+constexpr uint16_t can_id<IVT_Msg_Result_I> = IVT_MSG_RESULT_I_CAN_ID;
 
 
 template <>
